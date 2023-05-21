@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const questionsSlice = createSlice({
   name: "questions",
-  reducers: {},
+  reducers: {
+    addQuestions: (state, action) => {},
+    getQuestions: (state, action) => {},
+    getQuestion: (state, action) => {},
+    updateQuestion: (state, action) => {},
+    deleteQuestion: (state, action) => {},
+  },
   initialState: {},
 });
 
