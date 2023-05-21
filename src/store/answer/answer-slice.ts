@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const answerSlice = createSlice({
   name: "answer",
-  initialState: {},
+  initialState: {
+    answersList: [],
+    answer: {},
+  },
   reducers: {
     addAnswers: (state, action) => {},
     getAnswers: (state, action) => {},

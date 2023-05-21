@@ -9,7 +9,10 @@ const questionsSlice = createSlice({
     updateQuestion: (state, action) => {},
     deleteQuestion: (state, action) => {},
   },
-  initialState: {},
+  initialState: {
+    questionsList: [],
+    question: {},
+  },
 });
 
 export const questionsActions = questionsSlice.actions;
