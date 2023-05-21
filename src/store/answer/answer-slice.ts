@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Answer } from "../type";
 
 const answerSlice = createSlice({
   name: "answer",
@@ -7,10 +8,10 @@ const answerSlice = createSlice({
     answer: {},
   },
   reducers: {
-    addAnswers: (state, action) => {},
+    addAnswers: (state, action: PayloadAction<Answer>) => {},
     getAnswers: (state, action) => {},
     getAnswer: (state, action) => {},
-    updateAnswer: (state, action) => {},
+    updateAnswer: (state, action: PayloadAction<Answer>) => {},
     deleteAnswer: (state, action) => {},
   },
 });
