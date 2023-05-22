@@ -12,7 +12,6 @@ import { Survey } from "../../store/type";
 import { FC, useEffect } from "react";
 import { toast } from "react-toastify";
 import { format, parseISO } from 'date-fns';
-import { useDeleteSurveyMutation } from "../../redux/survey/survey-api";
 
 
 const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
@@ -22,35 +21,6 @@ interface ISurveyItemProps {
 }
 
 const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
-  const [deleteSurvey, { isLoading, error, isSuccess, isError }] =
-    useDeleteSurveyMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success("Survey deleted successfully");
-    }
-
-    if (isError) {
-      if (Array.isArray((error as any).data.error)) {
-        (error as any).data.error.forEach((el: any) =>
-          toast.error(el.message, {
-            position: "top-right",
-          })
-        );
-      } else {
-        toast.error((error as any).data.message, {
-          position: "top-right",
-        });
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
-
-  // const onDeleteHandler = (id: string) => {
-  //   if (window.confirm("Are you sure")) {
-  //     deleteSurvey(id);
-  //   }
-  // };
 
 
   return (
@@ -116,27 +86,6 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
                   Codevo
                 </Typography>
               </Box>
-              {/* <div className="post-settings">
-                <li>
-                  <MoreHorizOutlinedIcon />
-                </li>
-                <ul className="menu">
-                  <li onClick={() => setOpenPostModal(true)}>
-                    <ModeEditOutlineOutlinedIcon
-                      fontSize="small"
-                      sx={{ mr: "0.6rem" }}
-                    />
-                    Edit
-                  </li>
-                  <li onClick={() => onDeleteHandler(post.id)}>
-                    <DeleteOutlinedIcon
-                      fontSize="small"
-                      sx={{ mr: "0.6rem" }}
-                    />
-                    Delete
-                  </li>
-                </ul>
-              </div> */}
             </Box>
           </CardActions>
         </Card>
