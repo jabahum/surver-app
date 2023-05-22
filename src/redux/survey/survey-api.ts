@@ -43,6 +43,15 @@ export const surveyApi = createApi({
         };
       },
     }),
+
+    deleteSurvey: builder.mutation<Survey, { surveyId: string }>({
+      query({ surveyId }) {
+        return {
+          url: `${surveyId}/`,
+          method: "DELETE",
+        };
+      },
+    }),
   }),
 });
 
@@ -51,4 +60,5 @@ export const {
   useGetSurveyQuery,
   useAddSurveyMutation,
   useUpdateSurveyMutation,
+  useDeleteSurveyMutation,
 } = surveyApi;

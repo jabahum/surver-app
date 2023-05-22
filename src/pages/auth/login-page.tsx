@@ -55,7 +55,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = ((location.state as any)?.from.pathname as string) || "/profile";
+  const from = ((location.state as any)?.from.pathname as string) || "/home/";
 
   const {
     reset,

@@ -1,21 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "./auth/auth-slice";
-import questionsSlice from "./question/question-slice";
-import answerSlice from "./answer/answer-slice";
-import surveySlice from "./survey/survey-slice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { authApi } from "../redux/auth/auth-api";
 import { questionApi } from "../redux/question/question-api";
 import { answerApi } from "../redux/answer/answer-api";
 import { surveyApi } from "../redux/survey/survey-api";
+import { userApi } from "../redux/user/user-api";
+import questionReducer from "../store/question/question-slice";
+import answerReducer from "../store/answer/answer-slice";
+import surveyReducer from "../store/survey/survey-slice";
+import userReducer from "../store/user/user-slice";
 
 const store = configureStore({
   reducer: {
-    [authApi.reducerPath]: authSlice.reducer,
-    [questionApi.reducerPath]: questionsSlice.reducer,
-    [answerApi.reducerPath]: answerSlice.reducer,
-    [surveyApi.reducerPath]: surveySlice.reducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [questionApi.reducerPath]: questionApi.reducer,
+    [answerApi.reducerPath]: answerApi.reducer,
+    [surveyApi.reducerPath]: surveyApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    questionState: questionReducer,
+    answerState: answerReducer,
+    surveyState: surveyReducer,
+    userState: userReducer,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>
@@ -24,6 +29,7 @@ const store = configureStore({
       questionApi.middleware,
       answerApi.middleware,
       surveyApi.middleware,
+      userApi.middleware,
     ]),
 });
 

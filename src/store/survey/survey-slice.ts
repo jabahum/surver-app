@@ -1,21 +1,22 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Survey } from "../type";
 
+interface ISurveyState {
+  survey: Survey | null;
+}
+
+const initialState: ISurveyState = {
+  survey: null,
+};
+
 const surveysSlice = createSlice({
   name: "surveys",
   reducers: {
-    addSurveys: (state, action: PayloadAction<Survey>) => {},
-    getSurveys: (state, action) => {},
-    getSurvey: (state, action) => {},
-    updateSurvey: (state, action: PayloadAction<Survey>) => {},
-    deleteSurvey: (state, action) => {},
+    surveyState: (state, action: PayloadAction<Survey>) => {},
   },
-  initialState: {
-    surveysList: [],
-    survey: {},
-  },
+  initialState: initialState,
 });
 
-export const surveysActions = surveysSlice.actions;
+export default surveysSlice.reducer;
 
-export default surveysSlice;
+export const { surveyState } = surveysSlice.actions;

@@ -1,21 +1,22 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Answer } from "../type";
 
+interface IAnswerState {
+  answer: Answer | null;
+}
+
+const initialState: IAnswerState = {
+  answer: null,
+};
+
 const answerSlice = createSlice({
   name: "answer",
-  initialState: {
-    answersList: [],
-    answer: {},
-  },
+  initialState: initialState,
   reducers: {
-    addAnswers: (state, action: PayloadAction<Answer>) => {},
-    getAnswers: (state, action) => {},
-    getAnswer: (state, action) => {},
-    updateAnswer: (state, action: PayloadAction<Answer>) => {},
-    deleteAnswer: (state, action) => {},
+    answerState: (state, action: PayloadAction<Answer>) => {},
   },
 });
 
-export const answerActions = answerSlice.actions;
+export default answerSlice.reducer;
 
-export default answerSlice;
+export const { answerState } = answerSlice.actions;
