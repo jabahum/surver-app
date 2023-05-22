@@ -14,6 +14,7 @@ export const answerApi = createApi({
         return {
           url: "/",
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -22,6 +23,7 @@ export const answerApi = createApi({
         return {
           url: `/${surveyId}`,
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -31,6 +33,7 @@ export const answerApi = createApi({
           url: "/",
           method: "POST",
           body: data,
+          credentials: "include",
         };
       },
     }),
@@ -40,6 +43,7 @@ export const answerApi = createApi({
           url: `/${id}`,
           method: "PUT",
           body: answer,
+          credentials: "include",
         };
       },
     }),

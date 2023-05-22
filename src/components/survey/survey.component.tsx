@@ -11,6 +11,9 @@ import {
 import { Survey } from "../../store/type";
 import { FC, useEffect } from "react";
 import { toast } from "react-toastify";
+import { format, parseISO } from 'date-fns';
+import { useDeleteSurveyMutation } from "../../redux/survey/survey-api";
+
 
 const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
 
@@ -43,11 +46,12 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
-  const onDeleteHandler = (id: string) => {
-    if (window.confirm("Are you sure")) {
-      deleteSurvey(id);
-    }
-  };
+  // const onDeleteHandler = (id: string) => {
+  //   if (window.confirm("Are you sure")) {
+  //     deleteSurvey(id);
+  //   }
+  // };
+
 
   return (
     <>
@@ -66,9 +70,9 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
               component="div"
               sx={{ color: "#4d4d4d", fontWeight: "bold", height: "64px" }}
             >
-              {/* {post.title.length > 50
-                ? post.title.substring(0, 50) + "..."
-                : post.title} */}
+              {survey.title.length > 50
+                ? survey.title.substring(0, 50) + "..."
+                : survey.title}
             </Typography>
             <Box display="flex" alignItems="center" sx={{ mt: "1rem" }}>
               <Typography
@@ -82,14 +86,14 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
               >
                 {/* {post.category} */}
               </Typography>
-              {/* <Typography
+              <Typography
                 variant="body2"
                 sx={{
                   color: "#ffa238",
                 }}
               >
-                {format(parseISO(post.created_at), "PPP")}
-              </Typography> */}
+                {format(parseISO(survey.createdAt), "PPP")}
+              </Typography>
             </Box>
           </CardContent>
           <CardActions>
@@ -142,7 +146,5 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
 };
 
 export default SurveyItem;
-function useDeleteSurveyMutation(): [any, { isLoading: any; error: any; isSuccess: any; isError: any; }] {
-    throw new Error("Function not implemented.");
-}
+
 

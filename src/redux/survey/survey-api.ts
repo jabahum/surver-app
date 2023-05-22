@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Survey } from "../../store/type";
+import { Survey, SurveyResponse } from "../../store/type";
 
 const BASE_URL = process.env.REACT_APP_SERVER_ENDPOINT as string;
 
@@ -9,11 +9,12 @@ export const surveyApi = createApi({
     baseUrl: `${BASE_URL}survey/`,
   }),
   endpoints: (builder) => ({
-    getSurveys: builder.query<Survey[], void>({
+    getSurveys: builder.query<SurveyResponse, void>({
       query() {
         return {
           url: "/",
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -22,6 +23,7 @@ export const surveyApi = createApi({
         return {
           url: `${surveyId}/`,
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -31,6 +33,7 @@ export const surveyApi = createApi({
           url: "/",
           method: "POST",
           body: survey,
+          credentials: "include",
         };
       },
     }),
@@ -40,6 +43,7 @@ export const surveyApi = createApi({
           url: `${id}`,
           method: "PUT",
           body: survey,
+          credentials: "include",
         };
       },
     }),
@@ -49,6 +53,7 @@ export const surveyApi = createApi({
         return {
           url: `${surveyId}/`,
           method: "DELETE",
+          credentials: "include",
         };
       },
     }),

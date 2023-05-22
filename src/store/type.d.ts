@@ -35,7 +35,7 @@ export interface Question {
 }
 
 export interface Survey {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   isPublished: boolean;
@@ -43,6 +43,8 @@ export interface Survey {
   users: string[];
   questions: string[];
   submittedAt: Date;
+  updatedAt: string;
+  createdAt: string;
 }
 
 export interface Answer {
@@ -63,4 +65,10 @@ export interface User {
   created_at: string;
   updated_at: string;
   __v: number;
+}
+
+export interface SurveyResponse {
+  success: boolean;
+  count: number;
+  data: Survey[];
 }

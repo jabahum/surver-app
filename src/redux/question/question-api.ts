@@ -14,6 +14,7 @@ export const questionApi = createApi({
         return {
           url: "/",
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -22,6 +23,7 @@ export const questionApi = createApi({
         return {
           url: `/${questionId}`,
           method: "GET",
+          credentials: "include",
         };
       },
     }),
@@ -31,6 +33,7 @@ export const questionApi = createApi({
           url: "/",
           method: "POST",
           body: data,
+          credentials: "include",
         };
       },
     }),
@@ -43,6 +46,7 @@ export const questionApi = createApi({
           url: `${id}`,
           method: "PUT",
           body: question,
+          credentials: "include",
         };
       },
     }),

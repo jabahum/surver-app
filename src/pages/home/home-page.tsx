@@ -10,7 +10,7 @@ import SurveyItem from '../../components/survey/survey.component';
 export default function HomePage() {
 
 
-  const { isLoading, isError, error, data: surveys } = useGetSurveysQuery();
+  const { isLoading, isError, error, data: survey } = useGetSurveysQuery();
 
   useEffect(() => {
     if (isError) {
@@ -39,10 +39,10 @@ export default function HomePage() {
     maxWidth={false}
     sx={{ backgroundColor: '#2363eb', height: '100vh' }}
   >
-    {surveys?.length === 0 ? (
+    {survey?.data.length === 0 ? (
       <Box maxWidth='sm' sx={{ mx: 'auto', py: '5rem' }}>
         <Message type='info' title='Info'>
-          No posts at the moment
+          No surveys at the moment
         </Message>
       </Box>
     ) : (
@@ -56,8 +56,10 @@ export default function HomePage() {
           gridAutoRows: 'max-content',
         }}
       >
-        {surveys?.map((survey) => (
-          <SurveyItem key={survey.id} survey={survey} />
+
+        
+        {survey?.data.map((survey) => (
+          <SurveyItem key={survey._id} survey={survey} />
         ))}
       </Grid>
     )}
