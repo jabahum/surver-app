@@ -10,9 +10,6 @@ import {
 } from "@mui/material";
 import { Survey } from "../../store/type";
 import { FC, useEffect } from "react";
-import { toast } from "react-toastify";
-import { format, parseISO } from 'date-fns';
-
 
 const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
 
@@ -21,8 +18,6 @@ interface ISurveyItemProps {
 }
 
 const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
-
-
   return (
     <>
       <Grid item xs={12} md={6} lg={4}>
@@ -54,40 +49,11 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
                   mr: "1rem",
                 }}
               >
-                {/* {post.category} */}
+                {survey.description}
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "#ffa238",
-                }}
-              >
-                {format(parseISO(survey.createdAt), "PPP")}
-              </Typography>
+    
             </Box>
           </CardContent>
-          <CardActions>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              width="100%"
-              sx={{ px: "0.5rem" }}
-            >
-              <Box display="flex" alignItems="center">
-                <Avatar
-                  alt="cart image"
-                />
-                <Typography
-                  variant="body2"
-                  sx={{
-                    ml: "1rem",
-                  }}
-                >
-                  Codevo
-                </Typography>
-              </Box>
-            </Box>
-          </CardActions>
         </Card>
       </Grid>
     </>
@@ -95,5 +61,3 @@ const SurveyItem: FC<ISurveyItemProps> = ({ survey }) => {
 };
 
 export default SurveyItem;
-
-
